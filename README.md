@@ -23,9 +23,31 @@ spoon.MenuExt:start()
 
 Save the file, return to the Hammerspoon menu extra but this time click the reload configuration option for your new changes to take effect. Mac OS will warn you that Hammerspoon is trying to control Voice Over. Grant it permission and the spoon should start working.
 
-## Keys.
+## Keys
 
-Use option+shift+1-0 to get information about the menu extra in that slot.
+By default the keys are Option-Shift with the number row:
+
+* Option-Shift-1 to 9, and 0: the menu extra in slots 1 to 10. Press once to hear it, or twice quickly to open it.
+* Option-Shift-= (the last key of the number row): the next page of ten, for slots 11 to 20 and so on.
+* Option-Shift-` (the first key of the number row): the previous page.
+
+The page stays where you leave it. Menu extras are counted from left to right.
+
+macOS's own menu extras (Wi-Fi, Battery, Clock, Control Center and so on) are named, with their current value where macOS gives one, such as "Battery, 80%, charging" or "Clock, Mon 5 Oct 19:40".
+
+## Choosing the modifier keys
+
+Option-Shift with a number types a character on most keyboard layouts, which can't then be typed while MenuExt is running. To use other modifiers, set them before `start()`, as a list or a single string:
+
+```lua
+hs.loadSpoon("MenuExt")
+spoon.MenuExt.modifiers = {"ctrl", "opt"} -- or "CTRL+OPT"
+spoon.MenuExt:start()
+```
+
+Modifier names, in any case: `CTRL`, `OPT`, `CMD` and `SHIFT` (`CONTROL`, `CTL`, `OPTION`, `ALT` and `COMMAND` also work). For one side of the keyboard only, put `L` or `R` in front, e.g. `ROPT`, `LCMD` or `RCTRL`.
+
+Control-Option doesn't type characters, but it's VoiceOver's modifier unless you've changed that to Caps Lock in VoiceOver Utility.
 
 ## Credits
 
